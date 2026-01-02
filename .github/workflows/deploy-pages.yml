@@ -13,14 +13,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Optional build step: uncomment and adjust if you need to run a build (npm, hugo, etc.)
-      # - name: Build
-      #   run: |
-      #     npm ci
-      #     npm run build
+      # Optional build step here if needed
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./   # change to ./docs or ./dist if your site files are in a subfolder
+          personal_token: ${{ secrets.GH_PAGES_DEPLOY_TOKEN }}
+          publish_dir: ./   # change to ./docs or ./dist if needed
