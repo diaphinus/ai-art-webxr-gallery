@@ -1,0 +1,29 @@
+name: Deploy to GitHub Pages (official)
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # If your site files are in the repo root, keep './'
+          # If they live in ./docs or ./dist change this path accordingly.
+          path: ./
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
